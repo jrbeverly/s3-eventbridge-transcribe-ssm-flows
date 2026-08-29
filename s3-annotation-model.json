@@ -1,0 +1,135 @@
+{
+  "version": 1,
+  "merge": {
+    "operations": {
+      "GetObjectAnnotation": {
+        "name": "GetObjectAnnotation",
+        "http": {
+          "method": "GET",
+          "requestUri": "/{Bucket}/{Key+}?annotation"
+        },
+        "input": {
+          "shape": "GetObjectAnnotationRequest"
+        },
+        "output": {
+          "shape": "GetObjectAnnotationOutput"
+        }
+      },
+      "PutObjectAnnotation": {
+        "name": "PutObjectAnnotation",
+        "http": {
+          "method": "PUT",
+          "requestUri": "/{Bucket}/{Key+}?annotation"
+        },
+        "input": {
+          "shape": "PutObjectAnnotationRequest"
+        }
+      }
+    },
+    "shapes": {
+      "GetObjectAnnotationRequest": {
+        "type": "structure",
+        "required": [
+          "Bucket",
+          "Key",
+          "AnnotationName"
+        ],
+        "members": {
+          "Bucket": {
+            "shape": "BucketName",
+            "contextParam": {
+              "name": "Bucket"
+            },
+            "location": "uri",
+            "locationName": "Bucket"
+          },
+          "Key": {
+            "shape": "ObjectKey",
+            "contextParam": {
+              "name": "Key"
+            },
+            "location": "uri",
+            "locationName": "Key"
+          },
+          "AnnotationName": {
+            "shape": "AnnotationName",
+            "location": "querystring",
+            "locationName": "annotationName"
+          },
+          "VersionId": {
+            "shape": "ObjectVersionId",
+            "location": "querystring",
+            "locationName": "versionId"
+          }
+        }
+      },
+      "GetObjectAnnotationOutput": {
+        "type": "structure",
+        "members": {
+          "AnnotationPayload": {
+            "shape": "AnnotationPayload",
+            "streaming": true
+          }
+        },
+        "payload": "AnnotationPayload",
+        "required": []
+      },
+      "PutObjectAnnotationRequest": {
+        "type": "structure",
+        "required": [
+          "Bucket",
+          "Key",
+          "AnnotationName",
+          "AnnotationPayload"
+        ],
+        "members": {
+          "Bucket": {
+            "shape": "BucketName",
+            "contextParam": {
+              "name": "Bucket"
+            },
+            "location": "uri",
+            "locationName": "Bucket"
+          },
+          "Key": {
+            "shape": "ObjectKey",
+            "contextParam": {
+              "name": "Key"
+            },
+            "location": "uri",
+            "locationName": "Key"
+          },
+          "VersionId": {
+            "shape": "ObjectVersionId",
+            "location": "querystring",
+            "locationName": "versionId"
+          },
+          "AnnotationName": {
+            "shape": "AnnotationName",
+            "location": "querystring",
+            "locationName": "annotationName"
+          },
+          "AnnotationPayload": {
+            "shape": "AnnotationPayload",
+            "streaming": true
+          },
+          "ObjectIfMatch": {
+            "shape": "ObjectIfMatch",
+            "location": "header",
+            "locationName": "x-amz-object-if-match"
+          }
+        },
+        "payload": "AnnotationPayload"
+      },
+      "ObjectIfMatch": {
+        "type": "string"
+      },
+      "AnnotationPayload": {
+        "type": "blob"
+      },
+      "AnnotationName": {
+        "type": "string"
+      }
+    }
+  }
+}

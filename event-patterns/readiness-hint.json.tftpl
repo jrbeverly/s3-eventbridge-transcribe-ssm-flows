@@ -1,0 +1,15 @@
+{
+  "source": ["aws.s3"],
+  "detail-type": ["Object Created", "Object Annotation Created", "Object Annotation Removed"],
+  "detail": {
+    "bucket": {
+      "name": [${source_bucket_name}]
+    },
+    "object": {
+      "key": [
+        {"suffix": {"equals-ignore-case": ".mp4"}},
+        {"suffix": {"equals-ignore-case": ".transcription.vtt"}}
+      ]
+    }
+  }
+}

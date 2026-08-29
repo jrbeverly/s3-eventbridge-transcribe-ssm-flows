@@ -1,0 +1,18 @@
+{
+  "source": ["aws.s3"],
+  "detail-type": ["Object Created"],
+  "detail": {
+    "bucket": {
+      "name": [${source_bucket_name}]
+    },
+    "object": {
+      "key": [
+        {
+          "suffix": {
+            "equals-ignore-case": ".mp4"
+          }
+        }
+      ]
+    }
+  }
+}
